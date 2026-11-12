@@ -12,3 +12,6 @@
 .hq-announcements{border-left:4px solid #00b7ff;background:linear-gradient(110deg,#102c40,#101419)}.hq-announcements article+article{border-top:1px solid #315168;margin-top:18px;padding-top:12px}.event-rsvp{padding:18px;background:#0c2130;border-radius:6px;margin:20px 0}.honeypot{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}.event-tiles .topic{font-size:12px}.nearby-filters{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:15px 0}.nearby-filters label{margin:0}@media(max-width:700px){.nearby-filters{grid-template-columns:1fr}.event-tiles .topic{flex-direction:column;align-items:flex-start}}
 
 .top>a>img{filter:grayscale(1) invert(1) brightness(1.2);mix-blend-mode:screen}
+
+/* Keep transparent rider uploads readable against the dark site. */
+.rider img,.photo-grid img{background:#fff}
