@@ -30,3 +30,13 @@
 @media(max-width:600px){.world-map svg{aspect-ratio:1/1}.map-popup{padding:14px}.map-popup-rider img,.map-popup-avatar{width:48px;height:48px}}
 
 .event-upload{scroll-margin-top:20px;border:1px solid #315b75;border-radius:7px;background:#0c1923;padding:20px;margin:20px 0}.event-upload .toolbar{margin-bottom:8px}.event-upload .file{margin-bottom:0}
+
+/* Keep supporting text readable on black, including small phone screens. */
+:root{--muted:#c5d5e1}
+p,.meta,.counter,.photo-grid figcaption,label.field,.footer,.map-popup-note{color:#c5d5e1}
+.post-body,.rules li,.map-popup-info>span{color:#d5e2ec}
+input::placeholder,textarea::placeholder{color:#bdcedb;opacity:1}
+.tabs button{color:#d6e3ed}.map-popup-info .map-popup-link{color:#70dbff}
+.world-map svg{touch-action:none;user-select:none;-webkit-user-select:none;cursor:grab}
+.world-map svg:active{cursor:grabbing}.map-hint{font-size:13px;color:#d5e2ec}
+@media(max-width:600px){.meta,.counter,label.field,.photo-grid figcaption,.map-popup-info>span,.map-popup-note{font-size:12px}.map-popup-info .map-popup-link{font-size:13px}}

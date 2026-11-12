@@ -15,3 +15,11 @@ header{background:#000}.original-brand{background:transparent;border:0;box-shado
 
 /* Header: white artwork on black. Four-brand row: original black artwork on white. */
 .original-brand img{filter:grayscale(1) invert(1) brightness(1.2);mix-blend-mode:screen}.brand-logos .fh-logo-tile{background:#fff;border-color:var(--line)}.brand-logos .fh-logo-tile img{filter:none;mix-blend-mode:normal}
+
+/* Brighter descriptions, dates and labels against the dark background. */
+:root{--muted:#c5d5e1}
+.hero p,.hero-foot,.section-title p,.tour-note,.location,.count,.date-line,.card-bottom span,.spotlight p,.community p,.community li p,.faq p,.cta p,.official-brands p,footer,.hq-updates p{color:#c5d5e1}
+.tabs button,.nav-links{color:#d6e3ed}.tabs button.active{color:#050608}
+input::placeholder{color:#bdcedb;opacity:1}.detail-list small{color:#bed7e8}
+.date-line.known{color:#70dbff}
+@media(max-width:600px){.tour-note,.count,.date-line,.location,.card-bottom span,.hero-foot{font-size:12px}.hq-updates p,.hero p,.community p{font-size:14px}}
