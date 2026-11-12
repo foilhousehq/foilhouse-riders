@@ -9,7 +9,7 @@ const headers:Record<string,string>={'Access-Control-Allow-Origin':allowed?reque
 const json=(v:unknown,s=200)=>Response.json(v,{status:s,headers});if(req.method==='OPTIONS')return new Response(null,{status:204,headers});if(req.method!=='GET'&&req.method!=='POST')return json({error:'Method not allowed'},405);if(req.method==='POST'&&!allowed)return json({error:'Request not permitted'},403);
 const db=createClient(Deno.env.get('SUPABASE_URL')!,Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!,{auth:{persistSession:false,autoRefreshToken:false}});
 const q=(t:string)=>db.from('fh_'+t);const check=async(p:any)=>{const r=await p;if(r.error)throw r.error;return r.data};
-try{let user:any=null;const bearer=req.headers.get('authorization')?.replace(/^Bearer /i,'');if(bearer){const r=await db.auth.getUser(bearer);if(r.error||!r.data.user?.email_confirmed_at)return json({error:'Sign in again to continue.'},401);user=r.data.user}const owner=user?.id||null,admin=!!(user?.email_confirmed_at&&user.email?.toLowerCase()==='foilhousehq@gmail.com');const url=new URL(req.url),route=url.searchParams.get('route')||'community';
+try{let user:any=null;const bearer=req.headers.get('authorization')?.replace(/^Bearer /i,'');if(bearer){const r=await db.auth.getUser(bearer);if(r.error||!r.data.user?.email_confirmed_at)return json({error:'Sign in again to continue.'},401);user=r.data.user}const owner=user?.id||null,admin=!!(user?.email_confirmed_at&&(user.id==='394fb982-c5b2-4d2f-b9e7-23ce462e1411'||user.email?.toLowerCase()==='foilhousehq@gmail.com'));const url=new URL(req.url),route=url.searchParams.get('route')||'community';
 const allProfiles=async()=>await check(q('profiles').select('*').limit(5000));
 const publicProfile=(p:any,photos:any[]=[])=>({id:p.id,name:p.name,location:p.location,ski:p.ski,bio:p.bio,riding_style:p.riding_style,map_city:p.map_visible?p.map_city:'',map_lat:p.map_visible?p.map_lat:null,map_lng:p.map_visible?p.map_lng:null,map_visible:p.map_visible,photo:photos.find(f=>f.owner===p.owner)?.id||null});
 const identity=async()=>{const p=await allProfiles();return {p,pub:p.filter((x:any)=>x.published===1),mine:p.find((x:any)=>x.owner===owner)}};
@@ -41,4 +41,3 @@ if(b.action==='inquiry-status'&&['New','Contacted','Closed'].includes(b.status))
 return json({error:'Unknown action'},400);
 }catch(e){console.error('riders-api request failed',e instanceof Error?e.message:'database or validation error');return json({error:'Could not complete this request. Please try again.'},500)}
 });
-
