@@ -1,0 +1,27 @@
+{
+  "expo": {
+    "name": "FOILHOUSE Riders",
+    "slug": "foilhouse-riders",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "dark",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.foilhousehq.riders",
+      "infoPlist": {
+        "NSPhotoLibraryUsageDescription": "Choose photos to share with the FOILHOUSE Riders community.",
+        "NSCameraUsageDescription": "Take a photo to share with the FOILHOUSE Riders community.",
+        "ITSAppUsesNonExemptEncryption": false
+      }
+    },
+    "android": {
+      "predictiveBackGestureEnabled": false,
+      "package": "com.foilhousehq.riders"
+    },
+    "scheme": "foilhouseriders",
+    "plugins": [
+      "expo-router"
+    ]
+  }
+}
