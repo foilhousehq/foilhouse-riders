@@ -15,3 +15,16 @@
 
 /* Keep transparent rider uploads readable against the dark site. */
 .rider img,.photo-grid img{background:#fff}
+
+/* Rider cards stay on the map beside the selected city. */
+.world-map{position:relative;isolation:isolate}
+.world-map svg{height:auto;min-height:0;max-height:none;aspect-ratio:2/1}
+.world-map g:focus-visible{outline:none}
+.world-map g:focus-visible>circle:first-of-type{stroke:#fff;stroke-width:2}
+.map-popup{position:absolute;z-index:2;width:310px;max-width:calc(100% - 24px);max-height:calc(100% - 24px);overflow:auto;overscroll-behavior:contain;padding:18px;background:#101a24;color:#f1f7fc;border:1px solid #4ccfff;border-radius:12px;box-shadow:0 12px 40px #0009;text-align:left}
+.map-popup-close{position:absolute;right:8px;top:8px;width:32px;height:32px;display:grid;place-items:center;border:1px solid #35566c;border-radius:50%;background:#152b3b;color:#fff;font-size:23px;line-height:1}
+.map-popup-heading{padding-right:28px}.map-popup-heading .eyebrow{font-size:9px;letter-spacing:1.5px}.map-popup-heading h3{font-size:15px;line-height:1.4;margin:7px 0 14px;overflow-wrap:anywhere}
+.map-popup-rider{display:flex;align-items:center;gap:12px;width:100%;padding:12px 0;border:0;border-top:1px solid #304454;background:transparent;color:inherit;text-align:left}
+.map-popup-rider img,.map-popup-avatar{width:64px;height:64px;border-radius:7px;flex-shrink:0}.map-popup-rider img{object-fit:contain;background:#fff}.map-popup-avatar{display:grid;place-items:center;background:#12374e;color:#7edbff;font-size:27px;font-weight:bold}
+.map-popup-info{display:flex;flex-direction:column;gap:6px;min-width:0;overflow-wrap:anywhere}.map-popup-info strong{font-size:14px}.map-popup-info>span{font-size:11px;line-height:1.45;color:#bdd0df}.map-popup-info .map-popup-link{color:#70dbff;font-size:12px;font-weight:700}.map-popup-note{font-size:10px;line-height:1.4;margin:10px 0 0;color:#9db6c8}
+@media(max-width:600px){.world-map svg{aspect-ratio:1/1}.map-popup{padding:14px}.map-popup-rider img,.map-popup-avatar{width:48px;height:48px}}
