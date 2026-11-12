@@ -14,12 +14,17 @@ test('pinch zoom preserves the world point under the moving midpoint',()=>{
  close(next.center[1]+30/next.zoom,180+10/2);
 });
 test('zoom and panning remain within world bounds, including zoom limits',()=>{
- assert.deepEqual(clampView(.1,[-999,999]),{zoom:1,center:[360,180]});
- assert.deepEqual(clampView(100,[-999,999]),{zoom:8,center:[45,337.5]});
+ assert.deepEqual(clampView(.1,[-999,999]),{zoom:1,center:[0,360]});
+ assert.deepEqual(clampView(100,[-999,999]),{zoom:8,center:[0,360]});
  const next=gestureView({zoom:4,center:[400,180],points:[[-10,0],[10,0]]},[[-1000,0],[1000,0]]);
  assert.equal(next.zoom,8);assert.deepEqual(next.center,[400,180]);
 });
 test('lifting one finger can continue dragging without a jump',()=>{
  const start={zoom:3,center:[400,160],points:[[40,20]]};
  assert.deepEqual(gestureView(start,[[40,20]]),{zoom:3,center:[400,160]});
+});
+
+test('world view supports dragging before any zoom',()=>{
+ const next=gestureView({zoom:1,center:[360,180],points:[[0,0]]},[[80,40]]);
+ assert.deepEqual(next,{zoom:1,center:[280,140]});
 });

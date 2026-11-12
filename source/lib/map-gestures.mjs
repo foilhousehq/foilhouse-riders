@@ -1,7 +1,8 @@
+// The center may reach the edge so the map can move even at world zoom.
 // Coordinates use the original 720 × 360 world map, centered on the viewport.
 export function clampView(zoom, center) {
  const z=Math.max(1,Math.min(8,zoom));
- return {zoom:z,center:[Math.max(360/z,Math.min(720-360/z,center[0])),Math.max(180/z,Math.min(360-180/z,center[1]))]};
+ return {zoom:z,center:[Math.max(0,Math.min(720,center[0])),Math.max(0,Math.min(360,center[1]))]};
 }
 const midpoint=points=>points.length>1?[(points[0][0]+points[1][0])/2,(points[0][1]+points[1][1])/2]:points[0];
 const span=points=>points.length>1?Math.hypot(points[1][0]-points[0][0],points[1][1]-points[0][1]):0;
