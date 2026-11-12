@@ -1,0 +1,2 @@
+City names and approximate city centers: GeoNames, via lutangar/cities.json (https://github.com/lutangar/cities.json), CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/). Coordinates rounded to 0.1 degree for this directory. Country/state codes retained to distinguish cities.
+World land geometry: Natural Earth, public domain, https://www.naturalearthdata.com/ via nvkelso/natural-earth-vector ne_110m_land.
