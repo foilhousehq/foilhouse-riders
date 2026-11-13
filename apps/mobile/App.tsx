@@ -25,17 +25,17 @@ function RidersApp(){
  const webVisible=tab!=='Events';
  useEffect(()=>{
   let active=true;
-  AsyncStorage.multiGet([FAVORITES,EVENT_CACHE]).then(rows=>{
+  const hydration=AsyncStorage.multiGet([FAVORITES,EVENT_CACHE]).then(rows=>{
    if(!active)return;
    try{const favorites=JSON.parse(rows[0][1]||'[]');if(Array.isArray(favorites)){const ids=favorites.filter((id:unknown)=>Number.isInteger(id)&&Number(id)>=1&&Number(id)<=15);setSaved(ids);savedRef.current=ids}}catch{}
    try{const cached=JSON.parse(rows[1][1]||'null');if(validEvents(cached))setEvents(cached)}catch{}
   }).catch(()=>Alert.alert('Saved events unavailable','Favorites could not be loaded on this device.')).finally(()=>{if(active){hydrated.current=true;setReady(true)}});
   const controller=new AbortController();
-  fetch(SITE+'events.json',{signal:controller.signal}).then(r=>{if(!r.ok)throw Error();return r.json()}).then(next=>{if(active&&validEvents(next)){setEvents(next);void AsyncStorage.setItem(EVENT_CACHE,JSON.stringify(next)).catch(()=>{})}}).catch(()=>{});
+  hydration.then(()=>{if(!active)return;return fetch(SITE+'events.json?refresh='+Date.now(),{signal:controller.signal}).then(r=>{if(!r.ok)throw Error();return r.json()}).then(next=>{if(active&&validEvents(next)){setEvents(next);void AsyncStorage.setItem(EVENT_CACHE,JSON.stringify(next)).catch(()=>{})}}).catch(()=>{})});
   return()=>{active=false;controller.abort()};
  },[]);
  useEffect(()=>{const subscription=BackHandler.addEventListener('hardwareBackPress',()=>{if(!webVisible)return false;if(canGoBack)web.current?.goBack();else setTab('Events');return true});return()=>subscription.remove()},[webVisible,canGoBack]);
- function validEvents(value:unknown):value is TourEvent[]{return Array.isArray(value)&&value.length===15&&value.every(e=>Number.isInteger(e.id)&&typeof e.name==='string'&&typeof e.location==='string'&&typeof e.dates==='string')}
+ function validEvents(value:unknown):value is TourEvent[]{return Array.isArray(value)&&new Set(value.map(e=>e?.id)).size===value.length&&value.every(e=>e&&Number.isInteger(e.id)&&e.id>0&&typeof e.name==='string'&&typeof e.location==='string'&&typeof e.dates==='string'&&Number.isInteger(e.month)&&e.month>=1&&e.month<=12&&(e.region==='us'||e.region==='nz'))}
  function selectTab(next:Tab){setTab(next);if(next!=='Events'){setNavigationKey(n=>n+1);setCanGoBack(false);const target=tabs.find(t=>t.name===next)!;setSource(communityLink(target.route));setWebError('')}}
  function openEvent(event:TourEvent){setNavigationKey(n=>n+1);setCanGoBack(false);setTab('Photos');setSource(eventLink(event.id));setWebError('')}
  function toggleSaved(id:number){
