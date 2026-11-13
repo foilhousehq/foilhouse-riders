@@ -54,3 +54,7 @@ input::placeholder,textarea::placeholder{color:#bdcedb;opacity:1}
 .photo-description-editor{margin-top:12px;padding-top:12px;border-top:1px solid #293743}.photo-description-editor textarea{min-height:85px}
 
 .selected-photos{padding:16px 0}.selected-photos figure{min-width:0}.selected-photos figcaption{display:grid;gap:12px;overflow-wrap:anywhere}.selected-photos .photo-grid img{height:180px;object-fit:contain}.selected-photos .toolbar{flex-wrap:wrap}
+
+.map-controls button[aria-pressed="true"]{background:#00b7ff;color:#050608;border-color:#00b7ff}
+.map-attribution{position:relative;padding:5px 8px;background:#101419;color:#d5e2ec;font-size:10px;line-height:1.4;text-align:right;z-index:1}
+.map-attribution a{color:inherit}
