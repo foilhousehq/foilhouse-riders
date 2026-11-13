@@ -48,3 +48,5 @@ input::placeholder,textarea::placeholder{color:#bdcedb;opacity:1}
 @media(max-width:600px){.forum-sections{grid-template-columns:1fr}.forum-sections button{padding:15px}.forum-sections strong{font-size:16px;margin-bottom:4px}}
 
 .profile-location-options{max-height:220px;overflow-y:auto;border:1px solid #34708e;border-radius:8px;background:#0b1722}.profile-location-options button{display:block;width:100%;padding:12px;text-align:left;color:#fff;background:transparent;border:0;cursor:pointer}.profile-location-options button:hover,.profile-location-options button:focus{background:#163b50;outline:2px solid #00b7ff;outline-offset:-2px}
+
+.profile-photo-editor{margin:20px 0;padding:18px;border:1px solid #293743;border-radius:12px}.profile-photo-preview{display:block;width:160px;height:160px;object-fit:contain;background:#0b1722;border-radius:10px;margin:12px 0}
