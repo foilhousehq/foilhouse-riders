@@ -9,7 +9,7 @@ test('all original branding and worldwide location files are retained byte for b
  assert.ok((await readdir('public/map/cities')).length>200);
 });
 test('every event and static route is preserved for GitHub Pages',async()=>{
- const events=JSON.parse(await read('public/events.json'));assert.equal(events.length,13);assert.ok(events.every(e=>![12,13].includes(e.id)));assert.equal(events.filter(e=>e.region==='nz').length,1);
+ const events=JSON.parse(await read('public/events.json'));assert.equal(events.length,11);assert.ok(events.every(e=>![10,12,13,15].includes(e.id)));assert.equal(events.filter(e=>e.region==='nz').length,1);
  for(const name of ['index.html','riders/index.html','rider-login/index.html','auth/confirm/index.html'])assert.match(await read('dist/'+name),/\/foilhouse-riders\/assets\//);
  assert.doesNotMatch(await read('public/calendar.html'),/(?:href|src)="\/(?!foilhouse-riders\/|\/)/);
 });
