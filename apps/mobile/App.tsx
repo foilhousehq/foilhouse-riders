@@ -27,7 +27,7 @@ function RidersApp(){
   let active=true;
   const hydration=AsyncStorage.multiGet([FAVORITES,EVENT_CACHE]).then(rows=>{
    if(!active)return;
-   try{const favorites=JSON.parse(rows[0][1]||'[]');if(Array.isArray(favorites)){const ids=favorites.filter((id:unknown)=>Number.isInteger(id)&&Number(id)>=1&&Number(id)<=15);setSaved(ids);savedRef.current=ids}}catch{}
+   try{const favorites=JSON.parse(rows[0][1]||'[]');if(Array.isArray(favorites)){const ids=favorites.filter((id:unknown)=>Number.isInteger(id)&&Number(id)>=1);setSaved(ids);savedRef.current=ids}}catch{}
    try{const cached=JSON.parse(rows[1][1]||'null');if(validEvents(cached))setEvents(cached)}catch{}
   }).catch(()=>Alert.alert('Saved events unavailable','Favorites could not be loaded on this device.')).finally(()=>{if(active){hydrated.current=true;setReady(true)}});
   const controller=new AbortController();

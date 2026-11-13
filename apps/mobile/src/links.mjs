@@ -6,7 +6,7 @@ export function isInternalUrl(value){
 export function canOpenExternally(value){
  try{return ['https:','mailto:','tel:'].includes(new URL(value).protocol)}catch{return false}
 }
-export function eventLink(id){if(!Number.isInteger(id)||id<1||id>15)throw Error('Unknown event');return communityLink('events')+'&event='+id}
+export function eventLink(id){if(!Number.isSafeInteger(id)||id<1)throw Error('Unknown event');return communityLink('events')+'&event='+id}
 export function shareableUrl(value){
  try{const url=new URL(value);if(!isInternalUrl(value)||/rider-login|auth\//.test(url.pathname))return SITE;
  for(const key of [...url.searchParams.keys()])if(!['tab','event','thread'].includes(key))url.searchParams.delete(key);

@@ -9,7 +9,7 @@ test('external actions allow web, phone and mail but reject executable URLs',()=
  assert.ok(canOpenExternally('https://foilhousehq.com'));assert.ok(canOpenExternally('mailto:foilhouse@foilhousehq.com'));
  assert.equal(canOpenExternally('javascript:alert(1)'),false);assert.equal(canOpenExternally('file:///private/data'),false);
 });
-test('event links open the selected album',()=>{assert.match(eventLink(2),/tab=events&event=2$/);assert.throws(()=>eventLink(0));});
+test('event links open the selected album',()=>{assert.match(eventLink(2),/tab=events&event=2$/);assert.match(eventLink(17),/tab=events&event=17$/);assert.throws(()=>eventLink(0));assert.throws(()=>eventLink(1.5));assert.throws(()=>eventLink(Number.MAX_SAFE_INTEGER+1));});
 test('sharing never includes login or confirmation tokens',async()=>{
  const {shareableUrl}=await import('../src/links.mjs');
  assert.equal(shareableUrl(SITE+'rider-login/?token_hash=secret'),SITE);
