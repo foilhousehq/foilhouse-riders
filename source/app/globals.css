@@ -52,3 +52,5 @@ input::placeholder,textarea::placeholder{color:#bdcedb;opacity:1}
 .profile-photo-editor{margin:20px 0;padding:18px;border:1px solid #293743;border-radius:12px}.profile-photo-preview{display:block;width:160px;height:160px;object-fit:contain;background:#0b1722;border-radius:10px;margin:12px 0}
 
 .photo-description-editor{margin-top:12px;padding-top:12px;border-top:1px solid #293743}.photo-description-editor textarea{min-height:85px}
+
+.selected-photos{padding:16px 0}.selected-photos figure{min-width:0}.selected-photos figcaption{display:grid;gap:12px;overflow-wrap:anywhere}.selected-photos .photo-grid img{height:180px;object-fit:contain}.selected-photos .toolbar{flex-wrap:wrap}
