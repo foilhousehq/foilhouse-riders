@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Get FOILHOUSE Riders</title><meta name="description" content="Install FOILHOUSE Riders or preview the public Riders community."><meta name="theme-color" content="#050608">
+<link rel="icon" href="../icon.svg">
+<style>*{box-sizing:border-box}body{margin:0;background:#050608;color:#fff;font-family:system-ui,-apple-system,sans-serif;min-height:100svh;display:grid;place-items:center;padding:28px 20px}main{width:100%;max-width:460px}img{width:220px;max-width:80%;height:auto;display:block;margin-bottom:46px}.eyebrow{color:#00b7ff;font-weight:800;font-size:12px;letter-spacing:3px}h1{font-size:48px;line-height:1.04;letter-spacing:-2px;margin:16px 0 20px}p{color:#bdcbd5;line-height:1.6}a{display:block;text-decoration:none;text-align:center;padding:17px 18px;border-radius:10px;font-weight:750;margin-top:14px;background:#00b7ff;color:#050608}a.secondary{border:1px solid #3a5366;background:#111923;color:white}a:focus-visible{outline:3px solid white;outline-offset:4px}.note{font-size:13px;margin:12px 0 28px}.platform{border-top:1px solid #243340;margin-top:30px;padding-top:20px;font-size:13px}footer{color:#7590a4;font-size:11px;letter-spacing:2px;margin-top:42px}</style></head>
+<body><main><img src="../foilhouse-logo.png" alt="FOILHOUSE HQ"><div class="eyebrow">FOILHOUSE RIDERS</div><h1>Your crew.<br>Your next ride.</h1><p>Find foilers, explore events and share the ride. Take a look around or get the Android app.</p>
+<a id="install" href="https://expo.dev/accounts/foilhouse-hq/projects/foilhouse-riders/builds/f835bff7-eda6-4b43-9d0c-0641acbdcdb7">Install Android app</a>
+<p class="note" id="install-note">Android preview build · Opens the download page. Your phone may ask you to allow installation.</p>
+<a class="secondary" href="../riders/">Preview Riders website</a>
+<a class="secondary" id="open-app" href="foilhouseriders://Events">Open installed app</a>
+<p class="note">Already installed? Use “Open installed app.” Your browser may ask for permission to open it.</p>
+<p class="platform" id="ios-note">On iPhone? Preview the Riders website above. The iPhone app is coming soon.</p><footer>MADE FOR THE FOIL COMMUNITY.</footer>
+</main><script>
+if(/iPhone|iPad|iPod/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1)){
+document.getElementById('install').hidden=true;document.getElementById('install-note').hidden=true;
+}
+</script></body></html>
