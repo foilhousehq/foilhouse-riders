@@ -18,4 +18,4 @@ All nine `fh_` tables have row-level security enabled. Map visibility is opt-in,
 
 ## Verification
 
-Production build and migration tests check all 15 events, nested Pages routes, worldwide city files, exact asset checksums, and the public key/API adapter. Anonymous API reads return no private inquiry details. An actual account confirmation/password reset and signed-in publishing session require end-to-end verification. This repository contains the website foundation; native iOS/Android apps are separate future work.
+Production build and migration tests check all 13 events, nested Pages routes, worldwide city files, exact asset checksums, and the public key/API adapter. Anonymous API reads return no private inquiry details. An actual account confirmation/password reset and signed-in publishing session require end-to-end verification. This repository contains the website foundation; native iOS/Android apps are separate future work.
