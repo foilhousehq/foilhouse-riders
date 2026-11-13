@@ -22,6 +22,17 @@
     "scheme": "foilhouseriders",
     "plugins": [
       "expo-router"
-    ]
+    ],
+    "extra": {
+      "router": {
+        "asyncRoutes": {
+          "web": true
+        }
+      },
+      "eas": {
+        "projectId": "9da9ce75-fd14-4755-8dc3-ba0bb8797f23"
+      }
+    },
+    "owner": "foilhouse-hq"
   }
 }
