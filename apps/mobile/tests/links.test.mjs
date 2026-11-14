@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {SITE,isInternalUrl,canOpenExternally,eventLink} from '../src/links.mjs';
+import {SITE,isInternalUrl,canOpenExternally,eventLink,eventDetailsLink} from '../src/links.mjs';
 test('only the actual Riders origin and path load inside the app',()=>{
  assert.ok(isInternalUrl(SITE));assert.ok(isInternalUrl(eventLink(2)));
  for(const url of ['https://foilhousehq.github.io.evil.example/foilhouse-riders/','https://foilhousehq.github.io/other/','javascript:alert(1)','http://foilhousehq.github.io/foilhouse-riders/'])assert.equal(isInternalUrl(url),false);
@@ -15,3 +15,5 @@ test('sharing never includes login or confirmation tokens',async()=>{
  assert.equal(shareableUrl(SITE+'rider-login/?token_hash=secret'),SITE);
  assert.equal(shareableUrl(SITE+'riders/?tab=events&event=2&code=secret#access_token=secret'),SITE+'riders/?tab=events&event=2');
 });
+
+test('details links open the selected calendar details and survive sharing',async()=>{const {shareableUrl}=await import('../src/links.mjs');for(const id of [1,2,17]){const url=eventDetailsLink(id);assert.equal(url,SITE+'calendar.html#event-'+id);assert.ok(isInternalUrl(url));assert.equal(shareableUrl(url),url)}for(const id of [0,-1,1.5,Number.MAX_SAFE_INTEGER+1])assert.throws(()=>eventDetailsLink(id));});

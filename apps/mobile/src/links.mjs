@@ -13,3 +13,5 @@ export function shareableUrl(value){
  if(!/^#(?:calendar|event-\d+)?$/.test(url.hash))url.hash='';return url.toString();
  }catch{return SITE}
 }
+
+export function eventDetailsLink(id){if(!Number.isSafeInteger(id)||id<1)throw Error('Unknown event');return SITE+'calendar.html#event-'+id}
